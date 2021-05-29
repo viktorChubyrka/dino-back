@@ -21,13 +21,13 @@ async function registerUser(form) {
     return {
       data: { status: 404, message: "Введіть корректний email!" },
     };
-  userModel = await User.findOne({ email });
-  if (userModel)
+  let userModelEmail = await User.findOne({ email });
+  if (userModelEmail)
     return {
       data: { status: 404, message: "Цей емайл вже зайнятий" },
     };
-  userModel = await User.findOne({ nickname });
-  if (userModel)
+  let userModelLogin = await User.findOne({ nickname });
+  if (userModelLogin)
     return {
       data: { status: 404, message: "Цей нікнейм вже зайнятий" },
     };
