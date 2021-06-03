@@ -19,7 +19,7 @@ var upload = multer({ storage: storage });
 var type = upload.single("file");
 
 router.post("/create", type, async function (req, res) {
-  let path = "http://localhost:3000/" + req.file.filename;
+  let path = "http://dinoatlas.site/photo/" + req.file.filename;
   let newPost = await postsController.createPost(req.body,path);
   res.send(newPost);
 });
@@ -27,7 +27,7 @@ router.post("/create", type, async function (req, res) {
 router.post("/update", type, async function (req, res) {
   let path = '';
   if(req.file){
-    path = "http://localhost:3000/" + req.file.filename;
+    path = "http://dinoatlas.site/photo/" + req.file.filename;
   }
   let updatetPost = await postsController.updatePost(req.body,path);
   res.send(updatetPost);
